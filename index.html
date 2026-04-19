@@ -895,6 +895,309 @@
 
   .cam-img:hover .cam-img-label { opacity: 1; }
 
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { 
+    background: linear-gradient(135deg, #F8FAFB 0%, #EFF3FA 100%);
+    position: relative;
+    overflow: visible;
+  }
+
+  .testimonials-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 48px;
+    animation: slideInDown 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .tab-btn {
+    background: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--saffron);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+
+  .tab-btn.active {
+    background: var(--saffron);
+    color: white;
+    box-shadow: 0 8px 24px rgba(232,100,12,0.3);
+  }
+
+  .tab-btn.active::after {
+    transform: scaleX(1);
+  }
+
+  .tab-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232,100,12,0.2);
+  }
+
+  .testimonials-carousel {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(11,29,58,0.15);
+  }
+
+  .carousel-nav:hover {
+    background: var(--saffron);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 24px rgba(232,100,12,0.4);
+  }
+
+  .carousel-nav.prev {
+    left: 20px;
+  }
+
+  .carousel-nav.next {
+    right: 20px;
+  }
+
+  .carousel-nav svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .testimonial-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 40px 60px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateX(100%);
+  }
+
+  .testimonial-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 5;
+  }
+
+  .testimonial-slide.prev {
+    transform: translateX(-100%);
+  }
+
+  .testimonial-image {
+    flex-shrink: 0;
+    width: 200px;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(11,29,58,0.2);
+  }
+
+  .testimonial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .testimonial-slide.active .testimonial-image img {
+    transform: scale(1.05);
+  }
+
+  .testimonial-content {
+    flex: 1;
+    animation: slideInUp 0.6s ease 0.2s forwards;
+    opacity: 0;
+  }
+
+  .testimonial-slide.active .testimonial-content {
+    animation: slideInUp 0.6s ease 0.2s forwards;
+    opacity: 1;
+  }
+
+  .testimonial-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .testimonial-content p {
+    font-size: 12px;
+    color: var(--text-soft);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-content .quote {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--saffron-light);
+    border-left: 3px solid var(--saffron);
+    border-radius: 4px;
+  }
+
+  .testimonial-content .read-more {
+    color: var(--saffron);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .testimonial-content .read-more:hover {
+    color: var(--saffron-dark);
+    text-decoration: underline;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(11,29,58,0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .dot.active {
+    background: var(--saffron);
+    width: 28px;
+    border-radius: 5px;
+    box-shadow: 0 0 12px rgba(232,100,12,0.4);
+  }
+
+  .dot:hover {
+    background: var(--saffron);
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 900px) {
+    .testimonial-slide {
+      gap: 30px;
+      padding: 30px 40px;
+    }
+
+    .testimonial-image {
+      width: 150px;
+      height: 220px;
+    }
+
+    .testimonial-content h4 {
+      font-size: 20px;
+    }
+
+    .testimonial-content .quote {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .testimonials-carousel {
+      height: 500px;
+    }
+
+    .testimonial-slide {
+      flex-direction: column;
+      gap: 20px;
+      padding: 30px 20px;
+    }
+
+    .testimonial-image {
+      width: 120px;
+      height: 180px;
+    }
+
+    .carousel-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .carousel-nav.prev {
+      left: 10px;
+    }
+
+    .carousel-nav.next {
+      right: 10px;
+    }
+
+    .testimonial-content h4 {
+      font-size: 18px;
+    }
+
+    .testimonial-content .quote {
+      font-size: 13px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+  }
+
   /* ── FOOTER ── */
   footer {
     background: #080F1C;
@@ -1479,6 +1782,108 @@
         <span class="cam-img-label">Study Spaces</span>
       </div>
     </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-label">Success Stories</div>
+    <h2 class="section-title">What our students &<br><em>alumni say</em></h2>
+    <p class="section-desc">Hear directly from KVGIT graduates about their transformative experiences and career success.</p>
+
+    <div class="testimonials-tabs">
+      <button class="tab-btn active" data-tab="testimonials">Testimonials</button>
+      <button class="tab-btn" data-tab="alumni">Alumni</button>
+    </div>
+
+    <div class="testimonials-carousel">
+      <button class="carousel-nav prev" aria-label="Previous testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="carousel-container">
+        <!-- Testimonials Slides -->
+        <div class="carousel" id="carousel-testimonials">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide active">
+            <div class="testimonial-image">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80&fit=crop" alt="Priya Sharma">
+            </div>
+            <div class="testimonial-content">
+              <h4>Priya Sharma</h4>
+              <p>Batch 2024 | Software Engineer at Google</p>
+              <div class="quote">They say great leaders are not born but are made, and I strongly feel KVGIT is such a place which creates the perfect ambience and exposure that brings out the best of one's qualities and pushes each student to their maximum potential.</div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-image">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80&fit=crop" alt="Anjali Patel">
+            </div>
+            <div class="testimonial-content">
+              <h4>Anjali Patel</h4>
+              <p>Batch 2023 | Data Analyst at Amazon</p>
+              <div class="quote">The BCA program at KVGIT provided an excellent foundation in programming and database management. The campus environment is incredibly supportive for women pursuing tech careers.</div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-image">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80&fit=crop" alt="Neha Gupta">
+            </div>
+            <div class="testimonial-content">
+              <h4>Neha Gupta</h4>
+              <p>Batch 2024 | Full Stack Developer</p>
+              <div class="quote">Exceptional learning experience with world-class infrastructure. The internship opportunities and placement support were instrumental in my career growth and professional development.</div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alumni Slides -->
+        <div class="carousel hidden" id="carousel-alumni" style="display:none;">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide active">
+            <div class="testimonial-image">
+              <img src="https://images.unsplash.com/photo-1507840957550-e35f0a46ead4?w=300&q=80&fit=crop" alt="Sathwik Maanthini">
+            </div>
+            <div class="testimonial-content">
+              <h4>Sathwik Maanthini</h4>
+              <p>Founder, Habbit & Homelyfit</p>
+              <div class="quote">They say great leaders are not born but are made. KVGIT's perfect ambience and exposure brought out the best in me. My college gave me the push to bootstrap startups successfully and taught me how to be a generous and conscious human being.</div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-image">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80&fit=crop" alt="Mehta Entrepreneur">
+            </div>
+            <div class="testimonial-content">
+              <h4>Mehta Entrepreneur</h4>
+              <p>Co-Founder, Tech Venture</p>
+              <div class="quote">The network and mentorship from KVGIT has been invaluable throughout my entrepreneurial journey. The structured curriculum prepared me well for building and scaling businesses.</div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-nav next" aria-label="Next testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
   </div>
 </section>
 
@@ -1592,6 +1997,117 @@ scrollDots.forEach((dot, index) => {
     currentDotIndex = index;
   });
 });
+
+// Testimonials Carousel with Infinite Circular Scrolling
+let currentTab = 'testimonials';
+let currentSlide = 0;
+let autoPlayInterval;
+
+const tabButtons = document.querySelectorAll('.tab-btn');
+const carouselContainers = {
+  testimonials: document.getElementById('carousel-testimonials'),
+  alumni: document.getElementById('carousel-alumni')
+};
+
+const slides = {
+  testimonials: document.querySelectorAll('#carousel-testimonials .testimonial-slide'),
+  alumni: document.querySelectorAll('#carousel-alumni .testimonial-slide')
+};
+
+function createDots() {
+  const dotsContainer = document.getElementById('carousel-dots');
+  dotsContainer.innerHTML = '';
+  const slideCount = slides[currentTab].length;
+  
+  for (let i = 0; i < slideCount; i++) {
+    const dot = document.createElement('div');
+    dot.className = `dot ${i === 0 ? 'active' : ''}`;
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+}
+
+function showSlide(index) {
+  const slideArray = slides[currentTab];
+  const totalSlides = slideArray.length;
+  
+  // Infinite circular scrolling
+  index = ((index % totalSlides) + totalSlides) % totalSlides;
+  currentSlide = index;
+  
+  slideArray.forEach((slide, i) => {
+    slide.classList.remove('active', 'prev');
+    if (i === index) {
+      slide.classList.add('active');
+    } else if (i < index) {
+      slide.classList.add('prev');
+    }
+  });
+
+  // Update dots
+  document.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+}
+
+function nextSlide() {
+  showSlide(currentSlide + 1);
+  resetAutoPlay();
+}
+
+function prevSlide() {
+  showSlide(currentSlide - 1);
+  resetAutoPlay();
+}
+
+function goToSlide(index) {
+  showSlide(index);
+  resetAutoPlay();
+}
+
+function switchTab(tab) {
+  if (currentTab === tab) return;
+  
+  currentTab = tab;
+  currentSlide = 0;
+  
+  // Hide all carousels
+  Object.values(carouselContainers).forEach(c => c.style.display = 'none');
+  
+  // Show selected carousel
+  carouselContainers[tab].style.display = 'block';
+  
+  // Update tab buttons
+  tabButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
+  
+  createDots();
+  showSlide(0);
+  resetAutoPlay();
+}
+
+function resetAutoPlay() {
+  clearInterval(autoPlayInterval);
+  autoPlayInterval = setInterval(() => nextSlide(), 5000);
+}
+
+// Event listeners
+document.querySelector('.carousel-nav.prev').addEventListener('click', prevSlide);
+document.querySelector('.carousel-nav.next').addEventListener('click', nextSlide);
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
+
+// Initialize
+createDots();
+resetAutoPlay();
+
+// Pause on hover
+const carousel = document.querySelector('.testimonials-carousel');
+carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+carousel.addEventListener('mouseleave', resetAutoPlay);
 </script>
 </body>
 </html>
