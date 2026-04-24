@@ -122,8 +122,8 @@
   .btn-navy:hover { background: var(--navy-mid); color: #fff; }
   .btn-lg { padding: 0.95rem 2rem; font-size: 1.0625rem; }
   .btn-block { width: 100%; }
-  .btn-gold { background: var(--gold); color: var(--navy); }
-  .btn-gold:hover { background: #e09010; color: var(--navy); }
+  .btn-gold { background: var(--saffron); color: white; }
+  .btn-gold:hover { background: var(--saffron-dark); color: white; }
 
   /* ─── SECTION WRAPPER ─── */
   section { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
@@ -187,10 +187,10 @@
   .hero-copy { color: var(--navy); }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.35rem 1rem; background: rgba(232,67,26,0.08);
-    border: 1px solid rgba(232,67,26,0.2); border-radius: 999px;
+    padding: 0.35rem 1rem; background: rgba(45, 122, 58, 0.08);
+    border: 1px solid rgba(45, 122, 58, 0.3); border-radius: 999px;
     font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--primary); margin-bottom: 1.5rem;
+    text-transform: uppercase; color: #2D7A3A; margin-bottom: 1.5rem;
   }
   .hero-eyebrow::before { content: '◉'; font-size: 0.6rem; }
   .hero-title {
@@ -217,14 +217,14 @@
   }
   .hero-pointers strong { color: var(--navy); }
   .hero-badges {
-    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; margin-top: 1.5rem;
   }
   .badge {
-    display: inline-block; padding: 0.3rem 0.85rem;
-    background: rgba(232,67,26,0.08);
-    border: 1px solid rgba(232,67,26,0.15);
+    display: inline-block; padding: 0.5rem 1rem;
+    background: rgba(232,67,26,0.12);
+    border: 1px solid rgba(232,67,26,0.25);
     border-radius: 999px; font-size: 0.8125rem; color: var(--navy);
-    font-weight: 500;
+    font-weight: 600; white-space: nowrap;
   }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
   .enquiry-card {
@@ -475,6 +475,8 @@
     .hero-badges {
       gap: 10px;
       margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 
@@ -482,30 +484,8 @@
     .hero-badges {
       gap: 8px;
       margin-bottom: 24px;
-    }
-  }
-
-  .badge {
-    display: flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-    padding: 8px 16px; border-radius: 8px;
-    font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500;
-  }
-
-  @media (max-width: 900px) {
-    .badge {
-      font-size: 12px;
-      padding: 7px 14px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .badge {
-      font-size: 11px;
-      padding: 6px 12px;
-      background: rgba(11,29,58,0.08);
-      border-color: rgba(11,29,58,0.12);
-      color: var(--navy);
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 
@@ -1332,7 +1312,7 @@
   .campus-mosaic {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 220px 220px;
+    grid-template-rows: auto auto auto;
     gap: 12px; margin-top: 48px;
   }
 
@@ -1340,6 +1320,7 @@
     border-radius: var(--radius);
     overflow: hidden; position: relative;
     background: var(--navy);
+    aspect-ratio: 1;
   }
 
   .cam-img img {
@@ -1349,7 +1330,9 @@
 
   .cam-img:hover img { transform: scale(1.06); }
   .cam-img:nth-child(1) { grid-column: span 2; grid-row: span 2; border-radius: var(--radius-lg); }
-  .cam-img:nth-child(5) { grid-column: span 2; }
+  .cam-img:nth-child(4) { grid-column: 1 / span 2; grid-row: 2 / span 1; }
+  .cam-img:nth-child(5) { grid-column: span 2; aspect-ratio: 2; }
+  .cam-img:nth-child(7) { grid-column: 3 / span 2; grid-row: 2 / span 1; }
 
   .cam-img-label {
     position: absolute; bottom: 12px; left: 12px;
@@ -1362,17 +1345,113 @@
 
   .cam-img:hover .cam-img-label { opacity: 1; }
 
-  /* ── TESTIMONIALS ── */
-  .testimonials-section { 
+  /* ── FAQ ── */
+  .faq-section { 
     background: linear-gradient(135deg, #F8FAFB 0%, #EFF3FA 100%);
     position: relative;
-    overflow: visible;
   }
 
-  .testimonials-tabs {
+  .faq-container {
+    max-width: 700px;
+    margin: 40px auto 0;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--saffron);
+  }
+
+  .faq-header {
     display: flex;
-    justify-content: center;
-    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    background: white;
+    transition: background 0.3s ease;
+  }
+
+  .faq-item.active .faq-header {
+    background: var(--saffron-light);
+  }
+
+  .faq-header h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0;
+    flex: 1;
+  }
+
+  .faq-toggle {
+    font-size: 24px;
+    color: var(--saffron);
+    font-weight: 300;
+    transition: transform 0.3s ease;
+    min-width: 30px;
+    text-align: right;
+  }
+
+  .faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+  }
+
+  .faq-content {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item.active .faq-content {
+    padding: 0 24px 20px;
+    max-height: 500px;
+  }
+
+  .faq-content p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .faq-container {
+      margin: 32px auto 0;
+    }
+
+    .faq-header {
+      padding: 16px 16px;
+    }
+
+    .faq-header h3 {
+      font-size: 14px;
+    }
+
+    .faq-content {
+      padding: 0 16px;
+    }
+
+    .faq-item.active .faq-content {
+      padding: 0 16px 16px;
+    }
+
+    .faq-content p {
+      font-size: 13px;
+    }
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section {
     margin-bottom: 48px;
     animation: slideInDown 0.6s ease forwards;
     opacity: 0;
@@ -1803,7 +1882,7 @@
     .jobs-grid { grid-template-columns: repeat(2, 1fr); }
     .placement-stats { grid-template-columns: repeat(3, 1fr); }
     .footer-grid { grid-template-columns: 1fr 1fr; }
-    .campus-mosaic { grid-template-rows: 160px 160px; }
+    .campus-mosaic { grid-template-rows: auto; }
   }
 
   @media (max-width: 600px) {
@@ -1894,9 +1973,9 @@
     .job-card { min-height: auto; }
     .placement-stats { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-    .campus-mosaic { grid-template-columns: repeat(2, 1fr); gap: 8px; grid-template-rows: 140px 140px; }
-    .cam-img:nth-child(1) { grid-column: span 1; grid-row: span 1; }
-    .cam-img:nth-child(5) { grid-column: span 1; }
+    .campus-mosaic { grid-template-columns: repeat(2, 1fr); gap: 8px; grid-template-rows: auto; }
+    .cam-img:nth-child(1) { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; }
+    .cam-img:nth-child(5) { grid-column: span 1; aspect-ratio: 2; }
   }
 </style>
 </head>
@@ -2032,7 +2111,7 @@
 
     <div class="why-grid">
       <div class="why-image-wrap">
-        <img src="https://images.unsplash.com/photo-1577985043696-8bd54d9f093f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Campus life at KVGIT" loading="lazy">
+        <img src="./college-image-kvgit.jpg" alt="Campus life at KVGIT" loading="lazy">
         <div class="why-image-badge">
           <div class="big">15+</div>
           <div class="sm">Years of Excellence</div>
@@ -2065,49 +2144,33 @@
     <div class="section-label">Impeccable Placements</div>
     <h2 class="section-title" style="color:white;">Our graduates land at<br><em>top companies</em></h2>
 
-    <div class="placement-stats">
-      <div class="p-stat-card">
-        <div class="p-stat-num">200<span>+</span></div>
-        <div class="p-stat-label">Companies for Placements</div>
-      </div>
-      <div class="p-stat-card">
-        <div class="p-stat-num">6.5<span> LPA</span></div>
-        <div class="p-stat-label">Average Package</div>
-      </div>
-      <div class="p-stat-card">
-        <div class="p-stat-num">14.1<span> LPA</span></div>
-        <div class="p-stat-label">Highest Package</div>
-      </div>
+    <div class="placement-stats" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; align-items: center; margin: 40px 0; width: 100%;">
+      <img src="./HDFC.png" alt="HDFC" style="height: 160px; object-fit: contain; flex: 1; min-width: 200px; max-width: 300px;">
+      <img src="./Accenture-1.png" alt="Accenture" style="height: 160px; object-fit: contain; flex: 1; min-width: 200px; max-width: 300px;">
+      <img src="./SBI.webp" alt="SBI" style="height: 160px; object-fit: contain; flex: 1; min-width: 200px; max-width: 300px;">
     </div>
 
-    <div class="recruiter-label">Top Recruiters</div>
+    <!-- Top Recruiters with Logos -->
+    <!-- <div class="top-recruiters-logos" style="text-align: center; margin: 40px 0; padding: 20px;">
+      <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; align-items: center;">
+        <img src="./accenture-logo.jpg" alt="Accenture" style="height: 60px; object-fit: contain;">
+        <img src="https://upload.wikimedia.org/wikipedia/en/4/45/SBI_logo.svg" alt="SBI" style="height: 60px; object-fit: contain;">
+        <img src="./hdfc-bank-logo.jpg" alt="HDFC Bank" style="height: 60px; object-fit: contain;">
+      </div>
+    </div> -->
+
+    <div class="recruiter-label">More Partner Companies</div>
     <div class="recruiter-marquee">
       <div class="recruiter-track" id="marquee-track">
-        <div class="recruiter-pill">Infosys</div>
-        <div class="recruiter-pill">TCS</div>
-        <div class="recruiter-pill">Wipro</div>
-        <div class="recruiter-pill">HCL Technologies</div>
-        <div class="recruiter-pill">Tech Mahindra</div>
-        <div class="recruiter-pill">Accenture</div>
-        <div class="recruiter-pill">Cognizant</div>
-        <div class="recruiter-pill">IBM India</div>
-        <div class="recruiter-pill">Capgemini</div>
-        <div class="recruiter-pill">Mphasis</div>
-        <div class="recruiter-pill">NIIT Technologies</div>
-        <div class="recruiter-pill">L&T Infotech</div>
+        <div class="recruiter-pill">Opal Pharma</div>
+        <div class="recruiter-pill">Genpact</div>
+        <div class="recruiter-pill">Govt. of Rajasthan</div>
+        <div class="recruiter-pill">Deloitte</div>
         <!-- duplicate for seamless loop -->
-        <div class="recruiter-pill">Infosys</div>
-        <div class="recruiter-pill">TCS</div>
-        <div class="recruiter-pill">Wipro</div>
-        <div class="recruiter-pill">HCL Technologies</div>
-        <div class="recruiter-pill">Tech Mahindra</div>
-        <div class="recruiter-pill">Accenture</div>
-        <div class="recruiter-pill">Cognizant</div>
-        <div class="recruiter-pill">IBM India</div>
-        <div class="recruiter-pill">Capgemini</div>
-        <div class="recruiter-pill">Mphasis</div>
-        <div class="recruiter-pill">NIIT Technologies</div>
-        <div class="recruiter-pill">L&T Infotech</div>
+        <div class="recruiter-pill">Opal Pharma</div>
+        <div class="recruiter-pill">Genpact</div>
+        <div class="recruiter-pill">Govt. of Rajasthan</div>
+        <div class="recruiter-pill">Deloitte</div>
       </div>
     </div>
   </div>
@@ -2122,7 +2185,8 @@
 
     <div class="info-grid">
       <!-- Fee Table -->
-      <div class="info-card">
+      <div class="info-card" style="position: relative;">
+        <span class="fee-star" style="position:absolute; top:12px; right:20px; font-size:18px; color:var(--saffron); line-height:1;">*</span>
         <div class="info-card-head">
           <span class="icon"><svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px;"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.91-1.08-3.6-3.3-4.15V4h-3v2.9c-1.9.48-3.36 1.68-3.36 3.12 0 2.05 1.53 3.76 4.96 4.73 2.62.72 3 1.5 3 2.35 0 .85-.92 1.85-2.85 1.85-2.65 0-2.92-.88-2.95-2.17h-2.21c.05 2.05 1.53 3.76 4.96 4.73V21h3v-2.9c1.89-.46 3.35-1.66 3.35-3.12 0-2.05-1.54-3.76-4.96-4.73l.04-.04z"/></svg></span>
           <h3>Fee Structure (BCA)</h3>
@@ -2132,8 +2196,9 @@
           <tr><td>Semester 2</td><td>₹30,050</td></tr>
           <tr><td>Semester 3</td><td>₹30,050</td></tr>
           <tr><td>Semester 4</td><td>₹30,050</td></tr>
-          <tr class="fee-total"><td><strong>Total Fees</strong></td><td>₹1,20,200</td></tr>
+          <tr class="fee-total"><td><strong>Total Fees*</strong></td><td>₹1,20,200</td></tr>
         </table>
+        <p style="font-size: 12px; color: var(--text-soft); margin-top: 12px; padding: 0 28px;">*Fees without scholarships or Discounts.</p>
       </div>
 
       <!-- Eligibility -->
@@ -2271,136 +2336,111 @@
 <section class="campus-section" id="campus">
   <div class="section-inner">
     <div class="section-label">Campus Life</div>
-    <h2 class="section-title">A campus built for<br><em>extraordinary</em> women</h2>
+    <h2 class="section-title">A campus built for<br><em>extraordinary women</em></h2>
     <p class="section-desc">Located in the posh Vaishali Nagar area of Jaipur — a safe, vibrant, fully-equipped campus environment.</p>
 
     <div class="campus-mosaic">
       <div class="cam-img">
-        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&q=80&fit=crop" alt="Lecture Hall" loading="lazy">
-        <span class="cam-img-label">Lecture Hall</span>
-      </div>
-      <div class="cam-img">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop" alt="Computer Lab" loading="lazy">
+        <img src="./1.jpg" alt="Campus computer lab with girls" loading="lazy">
         <span class="cam-img-label">Computer Lab</span>
       </div>
       <div class="cam-img">
-        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80&fit=crop" alt="Library" loading="lazy">
-        <span class="cam-img-label">Digital Library</span>
+        <img src="./2.jpg" alt="Campus library" loading="lazy">
+        <span class="cam-img-label">Library</span>
       </div>
       <div class="cam-img">
-        <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=600&q=80&fit=crop" alt="Sports" loading="lazy">
-        <span class="cam-img-label">Sports Facility</span>
+        <img src="./3.jpg" alt="Campus hostel" loading="lazy">
+        <span class="cam-img-label">Hostel Rooms</span>
       </div>
       <div class="cam-img">
-        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80&fit=crop" alt="Auditorium" loading="lazy">
-        <span class="cam-img-label">Auditorium</span>
+        <img src="./5.jpg" alt="Campus grounds" loading="lazy">
+        <span class="cam-img-label">Classrooms</span>
       </div>
       <div class="cam-img">
-        <img src="https://images.unsplash.com/photo-1484820540004-14229fe36ca4?w=600&q=80&fit=crop" alt="Study Area" loading="lazy">
-        <span class="cam-img-label">Study Spaces</span>
+        <img src="./4.jpg" alt="Campus classroom" loading="lazy">
+        <span class="cam-img-label">Campus Grounds</span>
       </div>
+      <!-- <div class="cam-img">
+        <img src="./3.jpg" alt="Campus cafeteria" loading="lazy">
+        <span class="cam-img-label">Cafeteria</span>
+      </div> -->
     </div>
+  </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
-<section class="testimonials-section" id="faq">
+<!-- ── FAQ ── -->
+<section class="faq-section" id="faq">
   <div class="section-inner">
-    <div class="section-label">Success Stories</div>
-    <h2 class="section-title">What our students &<br><em>alumni say</em></h2>
-    <p class="section-desc">Hear directly from KVGIT graduates about their transformative experiences and career success.</p>
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Admission Related Questions<br><em>Parents Ask</em></h2>
+    <p class="section-desc">Find answers to common questions about admissions, curriculum, and campus life at KVGIT.</p>
 
-    <div class="testimonials-tabs">
-      <button class="tab-btn active" data-tab="testimonials">Testimonials</button>
-      <button class="tab-btn" data-tab="alumni">Alumni</button>
-    </div>
-
-    <div class="testimonials-carousel">
-      <button class="carousel-nav prev" aria-label="Previous testimonial">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-
-      <div class="carousel-container">
-        <!-- Testimonials Slides -->
-        <div class="carousel" id="carousel-testimonials">
-          <!-- Slide 1 -->
-          <div class="testimonial-slide active">
-            <div class="testimonial-image">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80&fit=crop" alt="Priya Sharma">
-            </div>
-            <div class="testimonial-content">
-              <h4>Priya Sharma</h4>
-              <p>Batch 2024 | Software Engineer at Google</p>
-              <div class="quote">They say great leaders are not born but are made, and I strongly feel KVGIT is such a place which creates the perfect ambience and exposure that brings out the best of one's qualities and pushes each student to their maximum potential.</div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="testimonial-slide">
-            <div class="testimonial-image">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80&fit=crop" alt="Anjali Patel">
-            </div>
-            <div class="testimonial-content">
-              <h4>Anjali Patel</h4>
-              <p>Batch 2023 | Data Analyst at Amazon</p>
-              <div class="quote">The BCA program at KVGIT provided an excellent foundation in programming and database management. The campus environment is incredibly supportive for women pursuing tech careers.</div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="testimonial-slide">
-            <div class="testimonial-image">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80&fit=crop" alt="Neha Gupta">
-            </div>
-            <div class="testimonial-content">
-              <h4>Neha Gupta</h4>
-              <p>Batch 2024 | Full Stack Developer</p>
-              <div class="quote">Exceptional learning experience with world-class infrastructure. The internship opportunities and placement support were instrumental in my career growth and professional development.</div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
+    <div class="faq-container">
+      <!-- FAQ Item 1 -->
+      <div class="faq-item">
+        <div class="faq-header">
+          <h3>What are the eligibility criteria for BCA admission?</h3>
+          <span class="faq-toggle">+</span>
         </div>
-
-        <!-- Alumni Slides -->
-        <div class="carousel hidden" id="carousel-alumni" style="display:none;">
-          <!-- Slide 1 -->
-          <div class="testimonial-slide active">
-            <div class="testimonial-image">
-              <img src="https://images.unsplash.com/photo-1507840957550-e35f0a46ead4?w=300&q=80&fit=crop" alt="Sathwik Maanthini">
-            </div>
-            <div class="testimonial-content">
-              <h4>Sathwik Maanthini</h4>
-              <p>Founder, Habbit & Homelyfit</p>
-              <div class="quote">They say great leaders are not born but are made. KVGIT's perfect ambience and exposure brought out the best in me. My college gave me the push to bootstrap startups successfully and taught me how to be a generous and conscious human being.</div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="testimonial-slide">
-            <div class="testimonial-image">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80&fit=crop" alt="Mehta Entrepreneur">
-            </div>
-            <div class="testimonial-content">
-              <h4>Mehta Entrepreneur</h4>
-              <p>Co-Founder, Tech Venture</p>
-              <div class="quote">The network and mentorship from KVGIT has been invaluable throughout my entrepreneurial journey. The structured curriculum prepared me well for building and scaling businesses.</div>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
+        <div class="faq-content" style="display: none;">
+          <p>Students must have passed 10+2 from a recognized board with Mathematics as a subject. We accept marks-based merit selection. Candidates appearing for their 12th exams can also apply provisionally.</p>
         </div>
       </div>
 
-      <button class="carousel-nav next" aria-label="Next testimonial">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <div class="faq-header">
+          <h3>What is the total fee structure for the BCA program?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-content" style="display: none;">
+          <p>The total annual fee for BCA is approximately ₹60,000 - ₹70,000 depending on category. We offer various scholarship options including government scholarships, SKVE Trust scholarships, and merit-based scholarships for eligible students.</p>
+        </div>
+      </div>
 
-      <div class="carousel-dots" id="carousel-dots"></div>
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <div class="faq-header">
+          <h3>Does KVGIT provide hostel facilities for students?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-content" style="display: none;">
+          <p>Yes, we have on-campus hostel facilities with 24×7 CCTV security, biometric attendance, and a supportive residential environment. Hostel rooms are well-equipped with modern amenities and dedicated study spaces.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <div class="faq-header">
+          <h3>What are the placement statistics for KVGIT graduates?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-content" style="display: none;">
+          <p>Our graduates are placed with 200+ companies across IT, finance, and consulting sectors. We have achieved an average placement package of ₹6.5 LPA and a highest package of ₹14.1 LPA. Our placement support includes interview prep, resume building, and direct recruitment drives.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="faq-item">
+        <div class="faq-header">
+          <h3>Are there any skill development programs beyond the curriculum?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-content" style="display: none;">
+          <p>Yes! We offer IIT-certified NPTEL courses, competitive exam preparation, skill enhancement workshops, and internship opportunities through our MOU partnerships with leading companies. Students also have access to our digital library and online learning resources.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="faq-item">
+        <div class="faq-header">
+          <h3>How can I apply for BCA admission at KVGIT?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-content" style="display: none;">
+          <p>You can apply online through our website or visit our campus in Vaishali Nagar, Jaipur. Fill out the admission form with your academic details, and we'll contact you within 24 hours. You can also call +91 81078 46498 for assistance.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2636,8 +2676,28 @@ resetAutoPlay();
 
 // Pause on hover
 const carousel = document.querySelector('.testimonials-carousel');
-carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-carousel.addEventListener('mouseleave', resetAutoPlay);
+if (carousel) {
+  carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+  carousel.addEventListener('mouseleave', resetAutoPlay);
+}
+
+// FAQ Toggle Functionality
+document.querySelectorAll('.faq-item .faq-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const faqItem = header.closest('.faq-item');
+    const isActive = faqItem.classList.contains('active');
+    
+    // Close all other FAQ items
+    document.querySelectorAll('.faq-item.active').forEach(item => {
+      if (item !== faqItem) {
+        item.classList.remove('active');
+      }
+    });
+    
+    // Toggle current item
+    faqItem.classList.toggle('active');
+  });
+});
 </script>
 </body>
 </html>
